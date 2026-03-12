@@ -1,5 +1,6 @@
 ---
 name: marp-theme-builder
+user-invocable: true
 description: Set up Marp theme development pipelines — SCSS→CSS compilation, Makefile automation, Git pre-commit hooks, GitHub Actions CI, and image diff testing. Use this skill whenever someone wants to automate their theme build, add CI/CD for Marp themes, configure pre-commit checks, or establish a reproducible build environment. Triggers on "set up the build", "automate the theme", "add CI", "configure GitHub Actions", "create a Makefile", "set up pre-commit", "add image diff tests", "make the build reproducible".
 ---
 

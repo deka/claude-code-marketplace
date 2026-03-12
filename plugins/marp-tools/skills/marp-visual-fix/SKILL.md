@@ -1,5 +1,6 @@
 ---
 name: marp-visual-fix
+user-invocable: true
 description: Diagnose and fix Marp slide display and layout problems — text overflow, image sizing, broken layouts, PDF rendering issues, font problems, and spacing. Use this skill proactively whenever something looks wrong with slides, content doesn't fit, images are cropped or too big, the layout is broken, or the exported output doesn't match the preview. Triggers on "fix the layout", "text overflows", "something looks wrong", "slides are broken", "image is cut off", "content doesn't fit", "PDF looks different", "font isn't showing".
 ---
 
