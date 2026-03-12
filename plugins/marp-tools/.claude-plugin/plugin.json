@@ -1,6 +1,6 @@
 {
   "name": "marp-tools",
-  "description": "Marp presentation toolkit: create slides, design themes, fix visual issues, export to PDF/PNG/PPTX, and set up build pipelines.",
+  "description": "Adds a /marp-export, /marp-markdown, /marp-theme-creator, /marp-visual-fix, /marp-theme-builder, /marp-knowledge skill to create marp presentations",
   "version": "1.0.0",
   "skills": "./skills/"
 }

@@ -7,7 +7,7 @@
       {
         "name": "marp-tools-plugin",
         "source": "./plugins/marp-tools",
-        "description": "Adds a /marp-export, marp-markdown, marp-theme-creator, marp-visual-fix, marp-theme-builder, marp-knowledge skill to create marp presentations"
+        "description": "Marp presentation toolkit: create slides, design themes, fix visual issues, export to PDF/PNG/PPTX, and set up build pipelines."
       }
     ]
   }
