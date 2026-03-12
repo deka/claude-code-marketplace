@@ -1,0 +1,111 @@
+// =============================================================================
+// Marp theme color scheme mixin collection
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Base color scheme
+// -----------------------------------------------------------------------------
+
+/// Set basic color scheme
+/// @param {Color} $bg - Background color
+/// @param {Color} $text - Text color
+/// @param {Color} $highlight - Highlight color
+@mixin color-scheme($bg, $text, $highlight) {
+  --color-background: #{$bg};
+  --color-foreground: #{$text};
+  --color-highlight: #{$highlight};
+  --color-dimmed: #{mix($text, $bg, 70%)};
+  --color-background-stripe: #{rgba($text, 0.05)};
+}
+
+// -----------------------------------------------------------------------------
+// Preset color schemes
+// -----------------------------------------------------------------------------
+
+/// Light theme (white background)
+@mixin color-scheme-light($primary: #003981, $highlight: #0288d1) {
+  @include color-scheme(#ffffff, $primary, $highlight);
+}
+
+/// Dark theme (dark background)
+@mixin color-scheme-dark($bg: #1a1a2e, $highlight: #6eb5ff) {
+  @include color-scheme($bg, #f0f0f0, $highlight);
+}
+
+/// Inverted theme
+@mixin color-scheme-invert($primary: #333333, $highlight: #6eb5ff) {
+  @include color-scheme($primary, #ffffff, $highlight);
+}
+
+// -----------------------------------------------------------------------------
+// Gradient backgrounds
+// -----------------------------------------------------------------------------
+
+/// Set gradient background
+/// @param {Color} $from - Start color
+/// @param {Color} $to - End color
+/// @param {Number} $angle - Angle (default: 135deg)
+@mixin gradient-background($from, $to, $angle: 135deg) {
+  background: linear-gradient($angle, $from, $to);
+}
+
+/// Corporate gradient (blue tones)
+@mixin gradient-corporate($primary: #003981, $secondary: #005ea5) {
+  @include gradient-background(darken($primary, 10%), $secondary);
+  color: white;
+}
+
+/// Warm gradient
+@mixin gradient-warm($from: #ff6b6b, $to: #feca57) {
+  @include gradient-background($from, $to);
+  color: white;
+}
+
+/// Cool gradient
+@mixin gradient-cool($from: #667eea, $to: #764ba2) {
+  @include gradient-background($from, $to);
+  color: white;
+}
+
+/// Dark gradient
+@mixin gradient-dark($from: #1a1a2e, $to: #16213e) {
+  @include gradient-background($from, $to);
+  color: white;
+}
+
+// -----------------------------------------------------------------------------
+// Usage examples
+// -----------------------------------------------------------------------------
+
+/*
+// Basic usage
+section {
+  @include color-scheme-light(#003981, #0288d1);
+}
+
+section.lead {
+  @include gradient-corporate(#003981, #005ea5);
+}
+
+section.cover {
+  @include gradient-dark();
+}
+
+section.invert {
+  @include color-scheme-invert();
+}
+
+// Custom colors
+section.custom {
+  @include color-scheme(
+    #f5f5dc,   // Cream background
+    #333333,   // Dark text
+    #8b4513    // Brown highlight
+  );
+}
+
+section.gradient-custom {
+  @include gradient-background(#11998e, #38ef7d, 90deg);
+  color: white;
+}
+*/

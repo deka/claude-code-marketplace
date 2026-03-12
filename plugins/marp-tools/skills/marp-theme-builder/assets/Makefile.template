@@ -1,0 +1,103 @@
+# =============================================================================
+# Marp theme Makefile template
+# =============================================================================
+#
+# Usage:
+#   make init      - Initial setup
+#   make           - Run build
+#   make csswatch  - SCSS watch mode
+#   make marpwatch - Slide watch mode
+#   make clean     - Remove generated files
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Path settings (change as needed)
+# -----------------------------------------------------------------------------
+THEME_NAME    = my-theme
+CSS_PATH      = ./marp-themes/$(THEME_NAME).css
+SCSS_PATH     = ./marp-themes/$(THEME_NAME).scss
+SRC_PATH      = ./example/example.md
+DST_BASE_PATH = ./example/example.png
+
+# Generated image files (add more as slide count increases)
+DST_PATH      = ./example/example.001.png \
+                ./example/example.002.png \
+                ./example/example.003.png
+
+# -----------------------------------------------------------------------------
+# Command settings
+# -----------------------------------------------------------------------------
+SASS_CMD      = sass
+MARP_CMD      = npx @marp-team/marp-cli@latest
+
+# -----------------------------------------------------------------------------
+# Targets
+# -----------------------------------------------------------------------------
+
+.DEFAULT_GOAL := all
+
+# Help
+help:
+	@echo "Available targets:"
+	@echo "  make init      - Initial setup (run once)"
+	@echo "  make           - Run build"
+	@echo "  make csswatch  - Watch SCSS and auto-compile"
+	@echo "  make marpwatch - Watch CSS/MD and auto-generate images"
+	@echo "  make serve     - Start local preview server"
+	@echo "  make clean     - Remove generated files"
+	@echo "  make test      - Clean build test"
+
+# Default target
+all: $(DST_PATH)
+
+# Initialize
+init:
+	@echo "Initializing..."
+	git config core.hooksPath .githooks
+	npm install -g sass
+	@echo "Done"
+
+# Image generation (depends on CSS and MD)
+$(DST_PATH): $(CSS_PATH) $(SRC_PATH)
+	$(MARP_CMD) \
+	  $(SRC_PATH) \
+	  --output $(DST_BASE_PATH) \
+	  --theme-set $(CSS_PATH) \
+	  --images png
+
+# CSS compile (depends on SCSS)
+$(CSS_PATH): $(SCSS_PATH)
+	$(SASS_CMD) $(SCSS_PATH) $(CSS_PATH)
+
+# SCSS watch mode
+csswatch:
+	$(SASS_CMD) --watch $(SCSS_PATH) $(CSS_PATH)
+
+# Marp watch mode
+marpwatch:
+	$(MARP_CMD) \
+	  $(SRC_PATH) \
+	  --watch \
+	  --output $(DST_BASE_PATH) \
+	  --theme-set $(CSS_PATH) \
+	  --images png
+
+# Preview server
+serve:
+	$(MARP_CMD) \
+	  $(SRC_PATH) \
+	  --theme-set $(CSS_PATH) \
+	  --server
+
+# Clean
+clean:
+	rm -f $(CSS_PATH) $(CSS_PATH).map
+	rm -f ./example/example.*.png
+
+# Test (clean build)
+test: clean all
+	@echo "Build test complete"
+
+# PHONY targets
+.PHONY: help all init csswatch marpwatch serve clean test

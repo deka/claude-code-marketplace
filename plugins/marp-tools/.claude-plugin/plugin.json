@@ -1,0 +1,37 @@
+{
+  "name": "marp-tools",
+  "description": "Marp presentation toolkit: create slides, design themes, fix visual issues, export to PDF/PNG/PPTX, and set up build pipelines.",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "name": "marp-markdown",
+      "description": "Create and edit Marp Markdown presentation files. Supports slide content writing, frontmatter configuration, and directive application.",
+      "triggers": ["create slides", "create presentation", "create slides with Marp", "write a presentation"]
+    },
+    {
+      "name": "marp-knowledge",
+      "description": "Comprehensive knowledge base for the Marp presentation framework. Provides detailed information on syntax, directives, theme system, image syntax, and more."
+    },
+    {
+      "name": "marp-theme-creator",
+      "description": "Create new custom Marp themes. Supports theme design in SCSS/CSS, color palette definition, typography settings, and slide class implementation.",
+      "triggers": ["create a new Marp theme", "create a company theme", "design a custom theme", "unify slide design"]
+    },
+    {
+      "name": "marp-visual-fix",
+      "description": "Diagnose and fix Marp slide display and layout issues. Resolves text overflow, image size problems, and PDF export issues.",
+      "triggers": ["fix slide appearance", "text overflows", "image is cropped", "layout is broken"]
+    },
+    {
+      "name": "marp-export",
+      "description": "Export Marp slides to various formats (PDF, PNG, PPTX, HTML).",
+      "argument-hint": "<Markdown file path> [output format: pdf|png|pptx|html]",
+      "triggers": ["convert to PDF", "export slides", "output as images", "export to PowerPoint"]
+    },
+    {
+      "name": "marp-theme-builder",
+      "description": "Build Marp theme pipelines. Supports SCSS→CSS compilation, sample image generation, Makefile setup, Git hooks, and GitHub Actions CI.",
+      "triggers": ["set up theme build environment", "configure CI", "create Makefile", "set up pre-commit hook"]
+    }
+  ]
+}

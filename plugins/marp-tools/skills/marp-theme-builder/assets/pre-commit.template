@@ -1,0 +1,55 @@
+#!/bin/sh
+# =============================================================================
+# Marp theme pre-commit hook template
+# =============================================================================
+#
+# Copy this file to .githooks/pre-commit to use.
+#
+# Setup:
+#   1. mkdir -p .githooks
+#   2. cp pre-commit.template .githooks/pre-commit
+#   3. chmod +x .githooks/pre-commit
+#   4. git config core.hooksPath .githooks
+#
+# Or:
+#   make init
+#
+# =============================================================================
+
+echo "========================================"
+echo "pre-commit: Build check starting"
+echo "========================================"
+
+# Run build
+build_output=$(make 2>&1)
+build_rc=$?
+
+if [ $build_rc -ne 0 ]; then
+    echo ""
+    echo "========================================"
+    echo "pre-commit: Build failed"
+    echo "========================================"
+    echo ""
+    echo "$build_output"
+    echo ""
+    echo "Fix errors before committing again."
+    echo ""
+    echo "Hints:"
+    echo "  - Check for SCSS syntax errors"
+    echo "  - Verify sass is installed (make init)"
+    echo "  - Use --no-verify to skip in emergencies"
+    echo ""
+    exit 1
+fi
+
+# Optionally stage generated files
+# git add marp-themes/*.css
+# git add example/example.*.png
+
+echo ""
+echo "========================================"
+echo "pre-commit: Build successful"
+echo "========================================"
+echo ""
+
+exit 0

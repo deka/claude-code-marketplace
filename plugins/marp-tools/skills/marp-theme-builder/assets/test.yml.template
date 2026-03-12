@@ -1,0 +1,128 @@
+# =============================================================================
+# Marp theme GitHub Actions workflow template
+# =============================================================================
+#
+# Copy this file to .github/workflows/test.yml to use.
+#
+# Features:
+#   - Build test on push/PR
+#   - Diff check against committed images
+#   - Save build artifacts
+#
+# =============================================================================
+
+name: Theme build test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euxo pipefail {0}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ----------------------------------------
+      # Setup
+      # ----------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install sass
+        run: npm install -g sass
+
+      # ----------------------------------------
+      # Build and diff check
+      # ----------------------------------------
+      - name: Backup committed images
+        run: |
+          mkdir -p example-backup
+          mv example/example.*.png example-backup/ 2>/dev/null || echo "No backup target"
+
+      - name: Clean build
+        run: make clean all
+
+      - name: Image diff check
+        run: |
+          echo "Starting image diff check..."
+          failed=0
+
+          for backup_file in example-backup/example.*.png; do
+            if [ -f "$backup_file" ]; then
+              name=$(basename "$backup_file")
+              gen_file="example/$name"
+
+              if [ ! -f "$gen_file" ]; then
+                echo "FAIL: $name - Not generated"
+                failed=1
+                continue
+              fi
+
+              result="$(composite -compose difference \
+                "$gen_file" \
+                "$backup_file" \
+                - | \
+                identify -format '%[mean]' -)"
+
+              # Threshold check (65535 * 0.001 ≈ 65.5)
+              if (( $(echo "$result > 65.5" | bc -l) )); then
+                echo "FAIL: $name - Diff detected (mean: $result)"
+                failed=1
+              else
+                echo "PASS: $name"
+              fi
+            fi
+          done
+
+          if [ $failed -eq 1 ]; then
+            echo ""
+            echo "Image differences detected. Please verify:"
+            echo "  1. SCSS changes are intentional"
+            echo "  2. Run 'make all' to regenerate images"
+            exit 1
+          fi
+
+          echo "All images match"
+
+      # ----------------------------------------
+      # Artifact save
+      # ----------------------------------------
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: example-slides
+          path: example/
+          retention-days: 14
+          if-no-files-found: error
+
+      # ----------------------------------------
+      # PR comment (optional)
+      # ----------------------------------------
+      # - name: Comment PR with result
+      #   if: github.event_name == 'pull_request'
+      #   uses: actions/github-script@v7
+      #   with:
+      #     script: |
+      #       github.rest.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: 'Build successful. View slide images in Artifacts.'
+      #       });

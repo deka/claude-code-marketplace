@@ -1,0 +1,13 @@
+{
+    "name": "deka-plugins",
+    "owner": {
+      "name": "Deka"
+    },
+    "plugins": [
+      {
+        "name": "marp-tools-plugin",
+        "source": "./plugins/marp-tools",
+        "description": "Adds a /marp-export, marp-markdown, marp-theme-creator, marp-visual-fix, marp-theme-builder, marp-knowledge skill to create marp presentations"
+      }
+    ]
+  }
