@@ -1,0 +1,6 @@
+{
+  "name": "linkedin",
+  "description": "Linkedin skill set. This skill set includes skills for creating LinkedIn posts.",
+  "version": "1.0.0",
+  "skills": "./skills/"
+}
