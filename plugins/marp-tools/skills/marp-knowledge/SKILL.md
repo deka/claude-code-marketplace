@@ -1,6 +1,6 @@
 ---
 name: marp-knowledge
-description: Comprehensive knowledge base for the Marp presentation framework. Provides detailed information on syntax, directives, theme system, image syntax, and more. Base skill referenced by other Marp skills (marp-markdown, marp-visual-fix, marp-theme-creator).
+description: Reference guide for Marp presentation framework syntax, directives, themes, images, and math/code. Use this skill whenever the user asks how Marp works, what a directive does, how to configure themes, how to use image backgrounds, or any "how do I..." question in a Marp context — even if they don't name the skill explicitly.
 ---
 
 # Marp Knowledge Base

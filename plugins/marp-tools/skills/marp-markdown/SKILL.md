@@ -1,6 +1,6 @@
 ---
 name: marp-markdown
-description: Create and edit Marp Markdown presentation files. Supports slide content writing, frontmatter configuration, and directive application. Use when requests include "create slides", "create presentation", etc.
+description: Create and edit Marp Markdown presentation files — slide content, structure, frontmatter, and directives. Use this skill whenever someone wants to make a slideshow, write a deck, draft a presentation, add or edit slides, or structure a talk. Triggers on "create slides", "write a presentation", "make a deck", "I need slides for...", "add a new slide", "help me with my talk", "edit this presentation".
 ---
 
 # Marp Markdown Skill

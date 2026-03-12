@@ -6,12 +6,12 @@ Marp presentation skill set for Claude Code.
 
 | Skill | Description |
 |-------|-------------|
-| [marp-knowledge](marp-knowledge/) | Comprehensive Marp knowledge base (reference for other skills) |
-| [marp-markdown](marp-markdown/) | Markdown slide creation support |
-| [marp-visual-fix](marp-visual-fix/) | Display and layout issue fixes |
-| [marp-export](marp-export/) | Export to PDF/PNG/PPTX/HTML |
-| [marp-theme-creator](marp-theme-creator/) | Custom theme creation |
-| [marp-theme-builder](marp-theme-builder/) | Build pipeline setup |
+| [marp-knowledge](marp-knowledge/) | Marp syntax reference — directives, themes, images, math/code |
+| [marp-markdown](marp-markdown/) | Create and edit Marp slides — content, structure, frontmatter, directives |
+| [marp-visual-fix](marp-visual-fix/) | Diagnose and fix display/layout problems — overflow, images, broken layouts, PDF rendering |
+| [marp-export](marp-export/) | Export to PDF, PNG, PPTX, or HTML for sharing, printing, or web publishing |
+| [marp-theme-creator](marp-theme-creator/) | Design custom themes from scratch — SCSS/CSS, color palettes, branding, slide classes |
+| [marp-theme-builder](marp-theme-builder/) | Automate theme builds — SCSS compilation, Makefile, Git hooks, GitHub Actions CI |
 
 ## Dependencies
 

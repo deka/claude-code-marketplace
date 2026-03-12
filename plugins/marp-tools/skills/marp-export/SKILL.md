@@ -1,6 +1,6 @@
 ---
 name: marp-export
-description: Export Marp slides to various formats (PDF, PNG, PPTX, HTML). Handles requests like "convert to PDF", "export slides", "output as images", "export to PowerPoint".
+description: Export Marp slides to PDF, PNG, PPTX, or HTML. Use this skill whenever someone wants to convert, save, share, or print their slides — including exporting each slide as an image, generating a PowerPoint, publishing as HTML, or preparing for a presentation. Triggers on "export to PDF", "convert to PowerPoint", "save as PNG", "output as images", "make it printable", "export each slide", "share the deck", "publish as HTML".
 argument-hint: "<Markdown file path> [output format: pdf|png|pptx|html]"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: marp-theme-creator
-description: Create new custom Marp themes. Supports theme design in SCSS/CSS, color palette definition, typography settings, and slide class implementation. Use when requests include "create a new Marp theme", etc.
+description: Design and create custom Marp themes from scratch using SCSS/CSS — color palettes, typography, branded layouts, and slide classes. Use this skill whenever someone wants a custom look for their slides, needs to match company branding, wants to go beyond the built-in themes, or needs a professional/branded template. Triggers on "create a theme", "make a custom theme", "match our brand colors", "design a company theme", "I want a different look", "make a dark theme", "create a branded template", "build a new theme".
 ---
 
 # Marp Theme Creator Skill
